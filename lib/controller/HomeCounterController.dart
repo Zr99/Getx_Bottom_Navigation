@@ -5,10 +5,14 @@ class HomeCounterController extends GetxController {
   final count = 10.obs;
 
   void Counting() {
-    count.value++;
+    while (count < 100) {
+      count.value++;
+    }
   }
 
-  void reset() {
+  void resetCounterToZero() {
     count.value = 0;
   }
+
+
 }

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controller/HomeCounterController.dart';
 
 class ThirdPage extends StatelessWidget {
-  const ThirdPage({Key? key}) : super(key: key);
+  final homeCounterController = Get.put(HomeCounterController());
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('Third page'), );
+    return Center(
+      child: Container(
+        child: Text(homeCounterController.count.toString()),
+      ),
+    );
   }
 }

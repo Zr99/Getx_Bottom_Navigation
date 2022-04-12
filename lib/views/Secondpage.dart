@@ -12,7 +12,7 @@ class Secondpage extends StatelessWidget {
       child: ElevatedButton(
         child: Text('Reset'),
         onPressed: () {
-          homeCounterController.reset();
+          homeCounterController.resetCounterToZero();
         },
       ),
     ));
