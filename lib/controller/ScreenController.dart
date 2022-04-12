@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import '../views/Homepage.dart';
 import '../views/Secondpage.dart';
 
-class ScreenController extends GetxController{
-  
+class ScreenController extends GetxController {
   var _selectedIndex = 0.obs;
 
   List<Widget> _screenList = [
@@ -13,6 +12,16 @@ class ScreenController extends GetxController{
     Secondpage(),
   ];
 
-  selectIndex(int index) => selectIndex(index);
-  getScreen() => _screenList[_selectedIndex.value];
-} 
+  // selectIndex(int index) => selectIndex(index);
+  // getScreen() => _screenList[_selectedIndex.value];
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+    @override
+  void dispose() {
+    super.dispose();
+  }
+}
