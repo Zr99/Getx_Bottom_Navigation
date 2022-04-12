@@ -5,12 +5,11 @@ import '../views/Homepage.dart';
 import '../views/Secondpage.dart';
 
 class ScreenController extends GetxController {
-  var _selectedIndex = 0.obs;
+  final selectedIndex = 0.obs;
 
-  List<Widget> _screenList = [
-    Homepage(),
-    Secondpage(),
-  ];
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
+  }
 
   // selectIndex(int index) => selectIndex(index);
   // getScreen() => _screenList[_selectedIndex.value];
@@ -20,7 +19,7 @@ class ScreenController extends GetxController {
     super.onInit();
   }
 
-    @override
+  @override
   void dispose() {
     super.dispose();
   }

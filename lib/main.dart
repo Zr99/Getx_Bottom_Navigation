@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import './views/Home_Bottom_Nav.dart';
+//import './controller/LifeCycleController.dart';
 
 void main() {
+ // Get.put(LifeCycleController());
   runApp(MyApp());
 }
 
