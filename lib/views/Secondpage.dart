@@ -10,6 +10,9 @@ class Secondpage extends StatelessWidget {
     return Center(
         child: Container(
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromRGBO(36, 54, 101, 1.0),
+        ),
         child: Text('Reset'),
         onPressed: () {
           homeCounterController.resetCounterToZero();

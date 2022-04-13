@@ -12,7 +12,7 @@ class Homepage extends StatelessWidget {
     
     return Center(
       child: Container(
-        child: Text('${homeCounter.count.value}'),
+        child: Obx(() =>Text('${homeCounter.count.value}', style: TextStyle(fontSize: 60),), ) ,
       ),
     );
   }

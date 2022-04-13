@@ -6,7 +6,7 @@ import '../controller/ScreenController.dart';
 import '../views/Homepage.dart';
 import '../views/Secondpage.dart';
 import '../views/Thirdpage.dart';
-import '../views/Fourthpage.dart';
+import '../views/Settings.dart';
 
 class HomeBottomNav extends StatelessWidget {
 
@@ -28,7 +28,7 @@ class HomeBottomNav extends StatelessWidget {
           buildBottomNavigationMenu(context, _screenController),
       body: Obx(() => IndexedStack(
             index: _screenController.selectedIndex.value,
-            children: [Homepage(), Secondpage(), ThirdPage(), Fourthpage()],
+            children: [Homepage(), Secondpage(), ThirdPage(), Settings()],
           )),
     ));
   }
