@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
 import '../controller/HomeCounterController.dart';
 
+import './Settings.dart';
+import './Homepage.dart';
+import './Home_Bottom_Nav.dart';
 class Secondpage extends StatelessWidget {
   final homeCounterController = Get.put(HomeCounterController());
   final countStorage = GetStorage('countStorage');
@@ -35,6 +39,7 @@ class Secondpage extends StatelessWidget {
             child: Text('Save text'),
             onPressed: () {
               homeCounterController.saveCounter();
+              Get.snackbar('Hey hey','You just saved the counter');
             },
           ),
         ),
@@ -49,6 +54,7 @@ class Secondpage extends StatelessWidget {
             child: Text('delete text'),
             onPressed: () {
               homeCounterController.deleteCounter();
+              Get.defaultDialog(title:'Are you sure?', textConfirm: 'Confirm', middleText: 'Are you sure you want to delete?', textCancel: 'Cancel',onConfirm:()=> Get.to(HomeBottomNav()));
             },
           ),
         ),

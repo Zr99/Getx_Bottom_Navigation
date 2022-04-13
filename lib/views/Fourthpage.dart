@@ -1,12 +1,23 @@
+import 'package:counter_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../controller/NotificationController.dart';
 
-class Fourthpage extends StatelessWidget {
+class Fourthpage extends StatefulWidget {
+  @override
+  State<Fourthpage> createState() => _FourthpageState();
+}
+
+class _FourthpageState extends State<Fourthpage> {
+  final notificationSettings = GetStorage('notification');
+
+  
+
   NotificationController notificationController =
       Get.put(NotificationController());
+
   // final notificationSettings = GetStorage('notification');
   Widget _buildSwitchListTile(
       String title, bool currentValue, Function updateValue) {
@@ -55,17 +66,31 @@ class Fourthpage extends StatelessWidget {
                     height: 10,
                   ),
                   Divider(),
-                   Obx((() => _buildSwitchListTile('MOCO low battery', notificationController.isLowBattery.value, (val)=> notificationController.isLowBattery_Moco()))),                  
+                  Obx(() => _buildSwitchListTile(
+                        'MOCO low battery',
+                        notificationController.isLowBattery.value,
+                        (val) => notificationController.isLowBattery_Moco(),
+                      )),
                   Divider(),
-                  Obx((() => _buildSwitchListTile('MOCO stuck', notificationController.isStuck.value, (val)=> notificationController.isStuck_Moco()))),
+                  Obx(() => _buildSwitchListTile(
+                      'MOCO stuck',
+                      notificationController.isStuck.value,
+                      (val) => notificationController.isStuck_Moco())),
                   Divider(),
-                  Obx((() => _buildSwitchListTile('MOCO start job', notificationController.isStartJob.value, (val)=> notificationController.isStartJob_Moco()))),
+                  Obx(() => _buildSwitchListTile(
+                      'MOCO start job',
+                      notificationController.isStartJob.value,
+                      (val) => notificationController.isStartJob_Moco())),
                   Divider(),
-                  Obx((() => _buildSwitchListTile('MOCO end job', notificationController.isEndJob.value, (val)=> notificationController.isEndJob_Moco()))),
-                  
+                  Obx(() => _buildSwitchListTile(
+                      'MOCO end job',
+                      notificationController.isEndJob.value,
+                      (val) => notificationController.isEndJob_Moco())),
                   Divider(),
-                   Obx((() => _buildSwitchListTile('Dump Station is Full', notificationController.isFull.value, (val)=> notificationController.isFull_DumpStation()))),
-                 
+                  Obx(() => _buildSwitchListTile(
+                      'Dump Station is Full',
+                      notificationController.isFull.value,
+                      (val) => notificationController.isFull_DumpStation())),
                   Divider(),
                 ],
               ),
@@ -77,4 +102,3 @@ class Fourthpage extends StatelessWidget {
     ;
   }
 }
-

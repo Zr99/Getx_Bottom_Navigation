@@ -9,14 +9,16 @@ class NotificationController extends GetxController {
   RxBool isEndJob = false.obs;
   RxBool isFull = false.obs;
 
-  final noticationSettings = GetStorage();
+  final noticationSettings = GetStorage('notification');
 
   void isLowBattery_Moco() {
     isLowBattery.value = isLowBattery.value ? false : true;
     if (isLowBattery.value) {
-      noticationSettings.write('is low', false);
+      noticationSettings.write('isLow', false);
+      print(noticationSettings.read('isLow'));
     } else if (!isLowBattery.value) {
-      noticationSettings.write('is low', true);
+      noticationSettings.write('isLow', true);
+      print(noticationSettings.read('isLow'));
     }
   }
 

@@ -20,7 +20,7 @@ class HomeBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _screenController = Get.put(ScreenController(), permanent: true);
+    final _screenController = Get.put(ScreenController(), permanent: false);
 
     return SafeArea(
         child: Scaffold(

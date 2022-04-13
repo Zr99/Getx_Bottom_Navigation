@@ -11,7 +11,7 @@ final HomeCounterController homeCounterController =
 
 Future<void> main() async {
   // Get.put(LifeCycleController());
-  //await GetStorage.init('notification');
+  await GetStorage.init('notification');
   await GetStorage.init('countStorage');
   runApp(MyApp());
 }
