@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../controller/NotificationController.dart';
 
 class Fourthpage extends StatelessWidget {
   NotificationController notificationController =
       Get.put(NotificationController());
-   
+  // final notificationSettings = GetStorage('notification');
   Widget _buildSwitchListTile(
       String title, bool currentValue, Function updateValue) {
     return SwitchListTile.adaptive(

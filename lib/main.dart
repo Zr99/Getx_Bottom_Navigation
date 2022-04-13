@@ -8,9 +8,11 @@ import './controller/HomeCounterController.dart';
 
 final HomeCounterController homeCounterController =
     Get.put(HomeCounterController());
+
 Future<void> main() async {
   // Get.put(LifeCycleController());
-  //await GetStorage.init();
+  //await GetStorage.init('notification');
+  await GetStorage.init('countStorage');
   runApp(MyApp());
 }
 
