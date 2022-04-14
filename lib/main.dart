@@ -1,18 +1,24 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import './views/Home_Bottom_Nav.dart';
 import './controller/HomeCounterController.dart';
+import './controller/NotificationController.dart';
 //import './controller/LifeCycleController.dart';
 
 final HomeCounterController homeCounterController =
     Get.put(HomeCounterController());
-
+final notificationController = Get.put(NotificationController());
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // Get.put(LifeCycleController());
   await GetStorage.init('notification');
   await GetStorage.init('countStorage');
+  
+  await notificationController.readOptions();
   runApp(MyApp());
 }
 

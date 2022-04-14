@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../controller/HomeCounterController.dart';
+import '../controller/NotificationController.dart';
 
 class ThirdPage extends StatelessWidget {
   final HomeCounterController homeCounterController = Get.find();
   final countStorage = GetStorage('countStorage');
   final settingsStorage = GetStorage('notification');
+  final notificationController = Get.put(NotificationController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +39,7 @@ class ThirdPage extends StatelessWidget {
               child: Text(
                 //do something here
             settingsStorage.read('') ?? 'Not Saved',
+            
             style: TextStyle(fontSize: 60),
           ))
         ],

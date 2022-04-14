@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationController extends GetxController {
   RxBool isLowBattery = false.obs;
@@ -10,16 +11,29 @@ class NotificationController extends GetxController {
   RxBool isFull = false.obs;
 
   final noticationSettings = GetStorage('notification');
+  SharedPreferences? prefs;
 
   void isLowBattery_Moco() {
     isLowBattery.value = isLowBattery.value ? false : true;
-    if (isLowBattery.value) {
-      noticationSettings.write('isLow', false);
-      print(noticationSettings.read('isLow'));
-    } else if (!isLowBattery.value) {
-      noticationSettings.write('isLow', true);
-      print(noticationSettings.read('isLow'));
-    }
+    saveOptions();
+    // if (isLowBattery.value) {
+    //   saveOptions();
+    //   //print(_saveOptions().toString());
+    // } else if (!isLowBattery.value) {
+    //   saveOptions();
+    // //  print(_saveOptions());
+    // }
+  }
+  @override
+  saveOptions() async{
+    prefs = await SharedPreferences.getInstance();
+    prefs!.setBool('isLow', isLowBattery.value);
+  }
+  @override
+  readOptions() async{
+    prefs = await SharedPreferences.getInstance();
+    bool? contain = prefs!.getBool('isLow');
+    isLowBattery.value = contain!;
   }
 
   void isStuck_Moco() {
@@ -36,5 +50,11 @@ class NotificationController extends GetxController {
 
   void isFull_DumpStation() {
     isFull.value = isFull.value ? false : true;
+  }
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
   }
 }
