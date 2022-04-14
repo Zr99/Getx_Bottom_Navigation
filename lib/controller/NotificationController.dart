@@ -15,14 +15,14 @@ class NotificationController extends GetxController {
 
   void isLowBattery_Moco() {
     isLowBattery.value = isLowBattery.value ? false : true;
-    saveOptions();
-    // if (isLowBattery.value) {
-    //   saveOptions();
-    //   //print(_saveOptions().toString());
-    // } else if (!isLowBattery.value) {
-    //   saveOptions();
-    // //  print(_saveOptions());
-    // }
+    
+    if (isLowBattery.value) {
+      saveOptions();
+      //print(_saveOptions().toString());
+    } else if (!isLowBattery.value) {
+      saveOptions();
+    //  print(_saveOptions());
+    }
   }
   @override
   saveOptions() async{
@@ -34,6 +34,7 @@ class NotificationController extends GetxController {
     prefs = await SharedPreferences.getInstance();
     bool? contain = prefs!.getBool('isLow');
     isLowBattery.value = contain!;
+
   }
 
   void isStuck_Moco() {

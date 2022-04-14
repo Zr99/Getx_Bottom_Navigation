@@ -16,7 +16,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Get.put(LifeCycleController());
   await GetStorage.init('notification');
-  await GetStorage.init('countStorage');
+  //await GetStorage.init('countStorage');
   
   await notificationController.readOptions();
   runApp(MyApp());
