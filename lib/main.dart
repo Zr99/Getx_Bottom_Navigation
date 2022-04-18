@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -18,7 +17,8 @@ Future<void> main() async {
   await GetStorage.init('notification');
   //await GetStorage.init('countStorage');
   
-  await notificationController.readOptions();
+  await notificationController.retrieveAllSavedOptions();
+  //await notificationController.retrieveSavedOptions();
   runApp(MyApp());
 }
 

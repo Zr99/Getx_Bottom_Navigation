@@ -15,42 +15,54 @@ class NotificationController extends GetxController {
 
   void isLowBattery_Moco() {
     isLowBattery.value = isLowBattery.value ? false : true;
+    saveAllOptions();
+  }
+
+  saveAllOptions() async{
+    prefs = await SharedPreferences.getInstance();
     
-    if (isLowBattery.value) {
-      saveOptions();
-      //print(_saveOptions().toString());
-    } else if (!isLowBattery.value) {
-      saveOptions();
-    //  print(_saveOptions());
-    }
+    prefs!.setBool('isLowBattery', isLowBattery.value);
+    prefs!.setBool('isStuck', isStuck.value);
+    prefs!.setBool('isStartJob', isStartJob.value);
+    prefs!.setBool('isEndJob', isEndJob.value);
+    prefs!.setBool('isFull', isFull.value);
+
   }
-  @override
-  saveOptions() async{
+  retrieveAllSavedOptions() async{
     prefs = await SharedPreferences.getInstance();
-    prefs!.setBool('isLow', isLowBattery.value);
-  }
-  @override
-  readOptions() async{
-    prefs = await SharedPreferences.getInstance();
-    bool? contain = prefs!.getBool('isLow');
-    isLowBattery.value = contain!;
+
+    bool? isLowBatteryBoolean = prefs!.getBool('isLowBattery') ?? false;
+    bool? isStuckBoolean = prefs!.getBool('isStuck') ?? false;
+    bool? isStartJobBoolean = prefs!.getBool('isStartJob')?? false;
+    bool? isEndJobBoolean = prefs!.getBool('isEndJob')?? false;
+    bool? isFull_DumpStationBoolean = prefs!.getBool('isFull') ?? false;
+
+    isLowBattery.value = isLowBatteryBoolean;
+    isStuck.value = isStuckBoolean;
+    isStartJob.value = isStartJobBoolean;
+    isEndJob.value = isEndJobBoolean;
+    isFull.value = isFull_DumpStationBoolean;
 
   }
 
   void isStuck_Moco() {
     isStuck.value = isStuck.value ? false : true;
+    saveAllOptions();
   }
 
   void isStartJob_Moco() {
     isStartJob.value = isStartJob.value ? false : true;
+    saveAllOptions();
   }
 
   void isEndJob_Moco() {
     isEndJob.value = isEndJob.value ? false : true;
+    saveAllOptions();
   }
 
   void isFull_DumpStation() {
     isFull.value = isFull.value ? false : true;
+    saveAllOptions();
   }
 
   @override
